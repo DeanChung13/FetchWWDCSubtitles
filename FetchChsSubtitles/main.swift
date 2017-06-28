@@ -271,6 +271,7 @@ https://devstreaming-cdn.apple.com/videos/wwdc/2017/507koao27wdpt/507/hls_vod_mv
 https://devstreaming-cdn.apple.com/videos/wwdc/2017/239jf31ojfabtst2rm/239/hls_vod_mvp.m3u8
 https://devstreaming-cdn.apple.com/videos/wwdc/2017/702lyr2y2j09fro222/702/hls_vod_mvp.m3u8
 """
+ 
 
 //if CommandLine.arguments.count != 2 {
 //  print("Usage: FetchChsSubtitles Url")
@@ -280,11 +281,42 @@ https://devstreaming-cdn.apple.com/videos/wwdc/2017/702lyr2y2j09fro222/702/hls_v
 ////  http://devstreaming.apple.com/videos/wwdc/2015/711y6zlz0ll/711/hls_vod_mvp.m3u8
 //  
 //}
+
+// MARK: load existing subtitle list
+class Session {
+  var number: Int?
+  init(rawString: String) {
+    let finalString = rawString.replacingOccurrences(of: "session_", with: "")
+    let finalString2 = finalString.replacingOccurrences(of: ".srt", with: "")
+    number = Int(finalString2)
+  }
+}
+let rawList = try String(contentsOfFile: "list.txt", encoding: String.Encoding.utf8)
+let tempArray = rawList.split(separator: "\n")
+let existingList = tempArray.map { rawString -> Int in
+  let session = Session(rawString: String(rawString))
+  return session.number ?? 0
+}
+
+// MARK: parse online subtitles
+Parse.lang = .ENG
 let urls = rawUrls.split(separator: "\n")
 for urlString in urls {
-  Parse.content(urlString: String(urlString))
+//for index in 0...10 {
+//  Parse.content(urlString: String(urlString))
+//  let urlString = urls[index]
+  let result = Parse.IsSessionSubtitleExist(m3u8Url: String(urlString))
+  if result.exist {
+    if existingList.contains(result.sessionNumber) {
+      result.alreadyDownloaded = true
+    }
+  }
+//  if (result.needToDownload) {
+    print("Lang \(Parse.lang): \(result)")
+    Parse.content(urlString: String(urlString))
+//  }
 }
-  
+
 
 //substring(with: result.range(of: "fileSequence")!)
 

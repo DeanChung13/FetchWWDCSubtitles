@@ -27,6 +27,7 @@
 		401E56AC1EF50BA60003FBA8 /* Parse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parse.swift; sourceTree = "<group>"; };
 		408EB0911E151C7F00BDEC18 /* FetchChsSubtitles */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FetchChsSubtitles; sourceTree = BUILT_PRODUCTS_DIR; };
 		408EB0941E151C7F00BDEC18 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		40ADE4F31EF910E0004B27BD /* list.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = list.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +62,17 @@
 			children = (
 				408EB0941E151C7F00BDEC18 /* main.swift */,
 				401E56AC1EF50BA60003FBA8 /* Parse.swift */,
+				40ADE4F21EF910E0004B27BD /* Resources */,
 			);
 			path = FetchChsSubtitles;
+			sourceTree = "<group>";
+		};
+		40ADE4F21EF910E0004B27BD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				40ADE4F31EF910E0004B27BD /* list.txt */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

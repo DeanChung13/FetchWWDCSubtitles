@@ -8,8 +8,69 @@
 
 import Foundation
 
+class ParseResult: CustomStringConvertible {
+  var exist = false
+  let sessionNumber: Int
+  var alreadyDownloaded: Bool = false
+  var description: String {
+    let checkString = exist ? "exist" : "not exist"
+    let downloadString = alreadyDownloaded ? ", already downloaded" : ""
+    return "Session \(sessionNumber) \(checkString) \(downloadString)"
+  }
+  var needToDownload: Bool {
+    get {
+      return (!alreadyDownloaded && exist)
+    }
+  }
+  init(sessionNumber: String) {
+    self.sessionNumber = Int(sessionNumber) ?? 0
+  }
+}
+
 class Parse {
-  static let lang = "zho"
+  enum Lang: String {
+    case ENG = "eng"
+    case CHT = "zho"
+  }
+  
+  static var lang: Lang = .ENG
+  class func IsSessionSubtitleExist(m3u8Url urlString: String) -> ParseResult {
+    
+    var urlComponents = urlString.components(separatedBy: "/")
+    urlComponents.removeLast()
+    let sessionNumber = String(describing:urlComponents.last!)
+    let result = ParseResult(sessionNumber: sessionNumber)
+  
+    let urlPath = urlComponents.joined(separator: "/")
+    let subtitlesIndexUrlString = urlPath.appending("/subtitles/\(lang.rawValue)/prog_index.m3u8")
+    
+    do {
+      let list = try String(contentsOf: URL(string: subtitlesIndexUrlString)!)
+      let tempArray = list.components(separatedBy: "#")
+      guard tempArray.count > 1 else {
+        return result
+      }
+      
+      let lastString = tempArray[tempArray.count-2]
+      let scanner = Scanner(string: lastString)
+      var scannerResult: NSString?
+      scanner.scanUpTo(".webvtt", into: &scannerResult)
+      
+      guard let myString = scannerResult?.description else {
+        return result
+      }
+      
+      guard myString.range(of: "fileSequence")?.upperBound != nil else {
+        return result
+      }
+      
+      result.exist = true
+    } catch {
+      return result
+    }
+    return result
+  }
+  
   class func content(urlString: String) {
     var urlComponents = urlString.components(separatedBy: "/")
     //    urlComponents.removeLast()
@@ -18,7 +79,7 @@ class Parse {
     let urlPath = urlComponents.joined(separator: "/")
     print(urlPath)
     
-    let subtitlesIndexUrlString = urlPath.appending("/subtitles/\(lang)/prog_index.m3u8")
+    let subtitlesIndexUrlString = urlPath.appending("/subtitles/\(lang.rawValue)/prog_index.m3u8")
     do {
       let list = try String(contentsOf: URL(string: subtitlesIndexUrlString)!)
       let tempArray = list.components(separatedBy: "#")
@@ -47,7 +108,7 @@ class Parse {
         //  http://devstreaming.apple.com/videos/wwdc/2015/711y6zlz0ll/711/
         var result = ""
         for index in 0...total {
-          let urlString = urlPath.appending("/subtitles/\(lang)/fileSequence\(index).webvtt")
+          let urlString = urlPath.appending("/subtitles/\(lang.rawValue)/fileSequence\(index).webvtt")
           let data = try String(contentsOf: URL(string:urlString)!)
           result = result.appending(data)
         }
