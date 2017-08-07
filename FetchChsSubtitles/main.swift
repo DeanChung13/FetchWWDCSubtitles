@@ -299,8 +299,9 @@ let existingList = tempArray.map { rawString -> Int in
 }
 
 // MARK: parse online subtitles
-Parse.lang = .ENG
+Parse.lang = .CHT
 let urls = rawUrls.split(separator: "\n")
+var notExistCount = 0
 for urlString in urls {
 //for index in 0...10 {
 //  Parse.content(urlString: String(urlString))
@@ -311,12 +312,18 @@ for urlString in urls {
       result.alreadyDownloaded = true
     }
   }
-//  if (result.needToDownload) {
+  if !result.exist {
+    notExistCount += 1
     print("Lang \(Parse.lang): \(result)")
-    Parse.content(urlString: String(urlString))
+  }
+  
+//  if (result.needToDownload) {
+//    print("Lang \(Parse.lang): \(result)")
+ 
+//    Parse.content(urlString: String(urlString))
 //  }
 }
-
+print("Total \(notExistCount)/\(urls.count) not exist")
 
 //substring(with: result.range(of: "fileSequence")!)
 

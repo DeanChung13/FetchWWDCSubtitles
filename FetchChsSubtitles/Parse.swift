@@ -109,8 +109,13 @@ class Parse {
         var result = ""
         for index in 0...total {
           let urlString = urlPath.appending("/subtitles/\(lang.rawValue)/fileSequence\(index).webvtt")
-          let data = try String(contentsOf: URL(string:urlString)!)
-          result = result.appending(data)
+          let data = try Data(contentsOf: URL(string:urlString)!)
+//          if let dataString = String(data: data, encoding: .gb_18030_2000) {
+          if let dataString = String(data: data, encoding: .utf8) {
+            result = result.appending(dataString)
+          } else {
+            print("text encoding error")
+          }
         }
         let writePath = "./\(sessionNumber!)_\(lang).srt"
         do {
@@ -121,9 +126,14 @@ class Parse {
         print("Done!")
       }
       
-    } catch {
+    } catch let error {
+      print("Error: \(error.localizedDescription)")
     }
     
   }
+}
+
+extension String.Encoding {
+  static let gb_18030_2000 = String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(CFStringEncodings.GB_18030_2000.rawValue)))
 }
 
