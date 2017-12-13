@@ -28,12 +28,8 @@ class ParseResult: CustomStringConvertible {
 }
 
 class Parse {
-  enum Lang: String {
-    case ENG = "eng"
-    case CHT = "zho"
-  }
   
-  static var lang: Lang = .ENG
+  static var lang: Subtitle.Language = .ENG
   class func IsSessionSubtitleExist(m3u8Url urlString: String) -> ParseResult {
     
     var urlComponents = urlString.components(separatedBy: "/")
@@ -133,7 +129,9 @@ class Parse {
   }
 }
 
-extension String.Encoding {
-  static let gb_18030_2000 = String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(CFStringEncodings.GB_18030_2000.rawValue)))
-}
+//extension String.Encoding {
+//  static let gb_18030_2000 = String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(CFStringEncodings.GB_18030_2000.rawValue)))
+//}
+//
+
 

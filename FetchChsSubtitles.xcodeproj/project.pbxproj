@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		400ACE551FE10EE000C782CC /* VideoSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400ACE541FE10EE000C782CC /* VideoSources.swift */; };
+		400ACE571FE10FF900C782CC /* FetchSubtitleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400ACE561FE10FF900C782CC /* FetchSubtitleManager.swift */; };
+		400ACE591FE1172600C782CC /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400ACE581FE1172600C782CC /* String+Additions.swift */; };
+		400ACE5B1FE1241400C782CC /* Subtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400ACE5A1FE1241400C782CC /* Subtitle.swift */; };
+		400ACE5D1FE1251900C782CC /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400ACE5C1FE1251900C782CC /* Parser.swift */; };
 		401E56AD1EF50BA60003FBA8 /* Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401E56AC1EF50BA60003FBA8 /* Parse.swift */; };
 		408EB0951E151C7F00BDEC18 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408EB0941E151C7F00BDEC18 /* main.swift */; };
 /* End PBXBuildFile section */
@@ -24,6 +29,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		400ACE541FE10EE000C782CC /* VideoSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSources.swift; sourceTree = "<group>"; };
+		400ACE561FE10FF900C782CC /* FetchSubtitleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSubtitleManager.swift; sourceTree = "<group>"; };
+		400ACE581FE1172600C782CC /* String+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
+		400ACE5A1FE1241400C782CC /* Subtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subtitle.swift; sourceTree = "<group>"; };
+		400ACE5C1FE1251900C782CC /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		401E56AC1EF50BA60003FBA8 /* Parse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parse.swift; sourceTree = "<group>"; };
 		408EB0911E151C7F00BDEC18 /* FetchChsSubtitles */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FetchChsSubtitles; sourceTree = BUILT_PRODUCTS_DIR; };
 		408EB0941E151C7F00BDEC18 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -41,6 +51,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		400ACE5E1FE12B1B00C782CC /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				400ACE5C1FE1251900C782CC /* Parser.swift */,
+				400ACE5A1FE1241400C782CC /* Subtitle.swift */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
 		408EB0881E151C7F00BDEC18 = {
 			isa = PBXGroup;
 			children = (
@@ -61,7 +80,11 @@
 			isa = PBXGroup;
 			children = (
 				408EB0941E151C7F00BDEC18 /* main.swift */,
+				400ACE541FE10EE000C782CC /* VideoSources.swift */,
 				401E56AC1EF50BA60003FBA8 /* Parse.swift */,
+				400ACE5E1FE12B1B00C782CC /* Parser */,
+				400ACE561FE10FF900C782CC /* FetchSubtitleManager.swift */,
+				400ACE581FE1172600C782CC /* String+Additions.swift */,
 				40ADE4F21EF910E0004B27BD /* Resources */,
 			);
 			path = FetchChsSubtitles;
@@ -102,7 +125,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Dean Chung";
 				TargetAttributes = {
 					408EB0901E151C7F00BDEC18 = {
@@ -134,7 +157,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				408EB0951E151C7F00BDEC18 /* main.swift in Sources */,
+				400ACE591FE1172600C782CC /* String+Additions.swift in Sources */,
+				400ACE551FE10EE000C782CC /* VideoSources.swift in Sources */,
+				400ACE5B1FE1241400C782CC /* Subtitle.swift in Sources */,
+				400ACE571FE10FF900C782CC /* FetchSubtitleManager.swift in Sources */,
 				401E56AD1EF50BA60003FBA8 /* Parse.swift in Sources */,
+				400ACE5D1FE1251900C782CC /* Parser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +178,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -158,7 +188,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -198,7 +232,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -206,7 +242,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -226,6 +266,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
