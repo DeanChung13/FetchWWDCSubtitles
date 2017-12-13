@@ -34,7 +34,10 @@ struct FetchSubtitleManager {
   
   
   
-  static func downloadContentWithUrl(_ urlString: String, session: Int, language lang: Subtitle.Language, parser: Parser?) {
+  static func downloadContentWithUrl(_ urlString: String,
+                                     session: Int,
+                                     language lang: Subtitle.Language,
+                                     parser: Parser) -> String? {
     // MARK: parse online subtitles
 
 //    let result = Parse.IsSessionSubtitleExist(m3u8Url: String(urlString))
@@ -54,18 +57,19 @@ struct FetchSubtitleManager {
 //      Parse.content(urlString: String(urlString))
 //    }
     
-    let subtitleDomainUrlString = urlString.replacingOccurrences(of: "hls_vod_mvp.m3u8", with: "")
+    let subtitleDomainUrlString = urlString
     let subtitlesIndexUrlString = subtitleDomainUrlString.appending("subtitles/\(lang.rawValue)/prog_index.m3u8")
     
     guard let list = try? String(contentsOf: URL(string: subtitlesIndexUrlString)!) else {
       print("Download failed: \(subtitlesIndexUrlString)")
-      return
+      return nil
     }
     
     
-    guard let total = parser?.totalFilesFrom(list: list) else {
+    let total = parser.totalFilesFrom(list: list)
+    if total < 1 {
       print("Parse total fileSequence error, \(list)")
-      return
+      return nil
     }
     
     print("Downloading video session_\(session),\(total) files...")
@@ -75,33 +79,17 @@ struct FetchSubtitleManager {
       let urlString = subtitleDomainUrlString.appending("subtitles/\(lang.rawValue)/fileSequence\(index).webvtt")
       guard let data = try? Data(contentsOf: URL(string:urlString)!) else {
         print("Download fileSequence(\(index) failed")
-        return
+        return nil
       }
       //          if let dataString = String(data: data, encoding: .gb_18030_2000) {
       guard let dataString = String(data: data, encoding: .utf8) else {
         print("fileSequence(\(index)) text encoding error")
-        return
+        return nil
       }
       rawSubtitleString = rawSubtitleString.appending(dataString)
     }
     
-    let writePath = "./\(session)_\(lang).srt"
-    
-    guard let subtitleString = parser?.format(rawSubtitleString) else {
-      print("Can't format rawSubtitle")
-      return
-    }
-    
-    do {
-      try subtitleString.write(toFile: writePath,
-                               atomically: true,
-                               encoding: String.Encoding.utf8)
-    } catch {
-      
-    }
-    print("Done!")
-  
-    
+    return rawSubtitleString
   }
   
   static func downloadSubtitle(withYear year: Int, session: Int, language lang: Subtitle.Language) {
@@ -111,9 +99,28 @@ struct FetchSubtitleManager {
       return
     }
     
-    downloadContentWithUrl(urlString, session: session, language: lang, parser: Parser())
+    let parser = Parser()
+    guard let rawSubtitleContent = downloadContentWithUrl(urlString, session: session, language: lang, parser: parser) else {
+      return
+    }
+    
+    let subtitleFormattedContent = parser.format(rawSubtitleContent)
+    
+    let writePath = "./session_\(session)_\(year)_\(lang).srt"
+    
+    do {
+      try subtitleFormattedContent.write(toFile: writePath,
+                               atomically: true,
+                               encoding: String.Encoding.utf8)
+    } catch {
+      
+    }
+    print("Done!")
   }
   
+  private static func saveSubtitle(_ subtitleContent: String) {
+
+  }
   private static func getVideoSourceUrlDictsFromYear(_ year: Int) -> [Int: String]? {
     switch year {
     case 2017:
