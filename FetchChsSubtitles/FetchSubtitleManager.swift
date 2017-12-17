@@ -9,53 +9,11 @@
 import Foundation
 
 struct FetchSubtitleManager {
-//  let rawUrls = """
-//https://devstreaming-cdn.apple.com/videos/wwdc/2017/213zpcyn0q9if99c/213/hls_vod_mvp.m3u8
-//https://devstreaming-cdn.apple.com/videos/wwdc/2017/223ehejg7kebf8wl/223/hls_vod_mvp.m3u8
-//https://devstreaming-cdn.apple.com/videos/wwdc/2017/227jjbmtoqrzj00/227/hls_vod_mvp.m3u8
-//"""
-//  
-//  // MARK: load existing subtitle list
-//  class Session {
-//    var number: Int?
-//    init(rawString: String) {
-//      let finalString = rawString.replacingOccurrences(of: "session_", with: "")
-//      let finalString2 = finalString.replacingOccurrences(of: ".srt", with: "")
-//      number = Int(finalString2)
-//    }
-//  }
-//  let rawList = try String(contentsOfFile: "list.txt", encoding: String.Encoding.utf8)
-//  let tempArray = rawList.split(separator: "\n")
-//  let existingList = tempArray.map { rawString -> Int in
-//    let session = Session(rawString: String(rawString))
-//    return session.number ?? 0
-//  }
-//
   
-  
-  
-  static func downloadContentWithUrl(_ urlString: String,
+  private static func downloadContentWithUrl(_ urlString: String,
                                      session: Int,
                                      language lang: Subtitle.Language,
                                      parser: Parser) -> String? {
-    // MARK: parse online subtitles
-
-//    let result = Parse.IsSessionSubtitleExist(m3u8Url: String(urlString))
-//    if result.exist {
-//      if existingList.contains(result.sessionNumber) {
-//        result.alreadyDownloaded = true
-//      }
-//    }
-//    if !result.exist {
-    
-//      print("Lang \(Parse.lang): \(result)")
-//    }
-
-//    if (result.needToDownload) {
-//      print("Lang \(Parse.lang): \(result)")
-
-//      Parse.content(urlString: String(urlString))
-//    }
     
     let subtitleDomainUrlString = urlString
     let subtitlesIndexUrlString = subtitleDomainUrlString.appending("subtitles/\(lang.rawValue)/prog_index.m3u8")
@@ -65,10 +23,9 @@ struct FetchSubtitleManager {
       return nil
     }
     
-    
     let total = parser.totalFilesFrom(list: list)
     if total < 1 {
-      print("Parse total fileSequence error, \(list)")
+      print("Parse total fileSequence error, video \(session)")
       return nil
     }
     
@@ -81,9 +38,9 @@ struct FetchSubtitleManager {
         print("Download fileSequence(\(index) failed")
         return nil
       }
-      //          if let dataString = String(data: data, encoding: .gb_18030_2000) {
+      // 之前Apple的中文字幕有時會用這個編碼 .gb_18030_2000
       guard let dataString = String(data: data, encoding: .utf8) else {
-        print("fileSequence(\(index)) text encoding error")
+        print("fileSequence(\(index)) text encoding error with UTF-8")
         return nil
       }
       rawSubtitleString = rawSubtitleString.appending(dataString)
@@ -92,9 +49,41 @@ struct FetchSubtitleManager {
     return rawSubtitleString
   }
   
-  static func downloadSubtitle(withYear year: Int, session: Int, language lang: Subtitle.Language) {
-    // MARK: parse online subtitles
-    Parse.lang = lang
+  public static func downloadSubtitles(withYear year: Int, language lang: Subtitle.Language) {
+    guard let urlDicts = getVideoSourceUrlDictsFromYear(year) else {
+      print("video sources with \(year) were not exist")
+      return
+    }
+    
+    let sortedSessions = urlDicts.keys.sorted()
+    
+    for session in sortedSessions {
+      guard let urlString = urlDicts[session] else {
+        continue
+      }
+      
+      guard !isContentExist(year: year, session: session, lang: lang) else {
+        continue
+      }
+      
+      let parser = Parser()
+      guard let rawSubtitleContent = downloadContentWithUrl(urlString, session:session , language: lang, parser: parser) else {
+        continue
+      }
+      
+      let formattedContent = parser.format(rawSubtitleContent)
+      
+      saveContent(formattedContent, year: year, session: session, lang: lang)
+      
+    }
+    
+  }
+  
+  public static func downloadSubtitle(withYear year: Int, session: Int, language lang: Subtitle.Language) {
+    guard !isContentExist(year: year, session: session, lang: lang) else {
+      return
+    }
+    
     guard let urlString = getVideoSourceUrlFromYear(year, session: session) else {
       return
     }
@@ -106,21 +95,52 @@ struct FetchSubtitleManager {
     
     let subtitleFormattedContent = parser.format(rawSubtitleContent)
     
-    let writePath = "./session_\(session)_\(year)_\(lang).srt"
-    
-    do {
-      try subtitleFormattedContent.write(toFile: writePath,
-                               atomically: true,
-                               encoding: String.Encoding.utf8)
-    } catch {
-      
-    }
-    print("Done!")
+    saveContent(subtitleFormattedContent, year: year, session: session, lang: lang)
   }
   
-  private static func saveSubtitle(_ subtitleContent: String) {
-
+  private static func saveContent(_ content: String, year: Int, session: Int, lang: Subtitle.Language) {
+    let directory = createDirectory(year: year)
+    let filePath = createFilePath(year: year, session: session, lang: lang)
+    
+    var isDir: ObjCBool = ObjCBool(true)
+    let fm = FileManager.default
+    
+    if fm.fileExists(atPath: directory, isDirectory: &isDir) { }
+      else {
+      try? fm.createDirectory(atPath: directory, withIntermediateDirectories: true, attributes: nil)
+    }
+    
+    do {
+      try content.write(toFile: filePath,
+                        atomically: true,
+                        encoding: String.Encoding.utf8)
+    } catch {
+      print("Save file Failed!, \(error.localizedDescription)")
+    }
+    print("Done!")
+    
   }
+  
+  private static func createDirectory(year: Int) -> String {
+    return "./WWDC\(year)"
+  }
+  
+  private static func createFilePath(year: Int, session: Int, lang: Subtitle.Language) -> String {
+    let directory = createDirectory(year: year)
+    return "\(directory)/Session_\(session)_\(lang).srt"
+  }
+  
+  private static func isContentExist(year: Int, session: Int, lang: Subtitle.Language) -> Bool {
+    let filePath = createFilePath(year: year, session: session, lang: lang)
+    var isDir: ObjCBool = ObjCBool(false)
+    let fm = FileManager.default
+    let isExist = fm.fileExists(atPath: filePath, isDirectory: &isDir)
+    if isExist {
+      print("context exists, \(filePath)")
+    }
+    return isExist
+  }
+
   private static func getVideoSourceUrlDictsFromYear(_ year: Int) -> [Int: String]? {
     switch year {
     case 2017:
@@ -147,4 +167,5 @@ struct FetchSubtitleManager {
     
     return urlString
   }
+  
 }

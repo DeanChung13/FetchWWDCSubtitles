@@ -8,6 +8,7 @@
 
 import Foundation
 
-FetchSubtitleManager.downloadSubtitle(withYear: 2017, session: 408, language: .CHS)
+//FetchSubtitleManager.downloadSubtitle(withYear: 2017, session: 402, language: .CHS)
+FetchSubtitleManager.downloadSubtitles(withYear: 2017, language: .CHS)
 
 

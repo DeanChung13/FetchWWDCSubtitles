@@ -12,7 +12,6 @@
 		400ACE591FE1172600C782CC /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400ACE581FE1172600C782CC /* String+Additions.swift */; };
 		400ACE5B1FE1241400C782CC /* Subtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400ACE5A1FE1241400C782CC /* Subtitle.swift */; };
 		400ACE5D1FE1251900C782CC /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400ACE5C1FE1251900C782CC /* Parser.swift */; };
-		401E56AD1EF50BA60003FBA8 /* Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401E56AC1EF50BA60003FBA8 /* Parse.swift */; };
 		408EB0951E151C7F00BDEC18 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408EB0941E151C7F00BDEC18 /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +33,6 @@
 		400ACE581FE1172600C782CC /* String+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
 		400ACE5A1FE1241400C782CC /* Subtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subtitle.swift; sourceTree = "<group>"; };
 		400ACE5C1FE1251900C782CC /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
-		401E56AC1EF50BA60003FBA8 /* Parse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parse.swift; sourceTree = "<group>"; };
 		408EB0911E151C7F00BDEC18 /* FetchChsSubtitles */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FetchChsSubtitles; sourceTree = BUILT_PRODUCTS_DIR; };
 		408EB0941E151C7F00BDEC18 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		40ADE4F31EF910E0004B27BD /* list.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = list.txt; sourceTree = "<group>"; };
@@ -81,7 +79,6 @@
 			children = (
 				408EB0941E151C7F00BDEC18 /* main.swift */,
 				400ACE541FE10EE000C782CC /* VideoSources.swift */,
-				401E56AC1EF50BA60003FBA8 /* Parse.swift */,
 				400ACE5E1FE12B1B00C782CC /* Parser */,
 				400ACE561FE10FF900C782CC /* FetchSubtitleManager.swift */,
 				400ACE581FE1172600C782CC /* String+Additions.swift */,
@@ -161,7 +158,6 @@
 				400ACE551FE10EE000C782CC /* VideoSources.swift in Sources */,
 				400ACE5B1FE1241400C782CC /* Subtitle.swift in Sources */,
 				400ACE571FE10FF900C782CC /* FetchSubtitleManager.swift in Sources */,
-				401E56AD1EF50BA60003FBA8 /* Parse.swift in Sources */,
 				400ACE5D1FE1251900C782CC /* Parser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
