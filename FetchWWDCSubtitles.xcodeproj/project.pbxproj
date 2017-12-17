@@ -1,0 +1,308 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		403665E31FE66D5900053BEF /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403665E21FE66D5900053BEF /* main.swift */; };
+		403665EF1FE66D9100053BEF /* Subtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403665EA1FE66D9100053BEF /* Subtitle.swift */; };
+		403665F01FE66D9100053BEF /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403665EB1FE66D9100053BEF /* Parser.swift */; };
+		403665F11FE66D9100053BEF /* VideoSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403665EC1FE66D9100053BEF /* VideoSources.swift */; };
+		403665F21FE66D9100053BEF /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403665ED1FE66D9100053BEF /* String+Additions.swift */; };
+		403665F31FE66D9100053BEF /* FetchSubtitleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403665EE1FE66D9100053BEF /* FetchSubtitleManager.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		403665DD1FE66D5900053BEF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		403665DF1FE66D5900053BEF /* FetchWWDCSubtitles */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FetchWWDCSubtitles; sourceTree = BUILT_PRODUCTS_DIR; };
+		403665E21FE66D5900053BEF /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		403665EA1FE66D9100053BEF /* Subtitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subtitle.swift; sourceTree = "<group>"; };
+		403665EB1FE66D9100053BEF /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		403665EC1FE66D9100053BEF /* VideoSources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoSources.swift; sourceTree = "<group>"; };
+		403665ED1FE66D9100053BEF /* String+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
+		403665EE1FE66D9100053BEF /* FetchSubtitleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchSubtitleManager.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		403665DC1FE66D5900053BEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		403665D61FE66D5900053BEF = {
+			isa = PBXGroup;
+			children = (
+				403665E11FE66D5900053BEF /* FetchWWDCSubtitles */,
+				403665E01FE66D5900053BEF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		403665E01FE66D5900053BEF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				403665DF1FE66D5900053BEF /* FetchWWDCSubtitles */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		403665E11FE66D5900053BEF /* FetchWWDCSubtitles */ = {
+			isa = PBXGroup;
+			children = (
+				403665E91FE66D9100053BEF /* Parser */,
+				403665EE1FE66D9100053BEF /* FetchSubtitleManager.swift */,
+				403665ED1FE66D9100053BEF /* String+Additions.swift */,
+				403665EC1FE66D9100053BEF /* VideoSources.swift */,
+				403665E21FE66D5900053BEF /* main.swift */,
+			);
+			path = FetchWWDCSubtitles;
+			sourceTree = "<group>";
+		};
+		403665E91FE66D9100053BEF /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				403665EA1FE66D9100053BEF /* Subtitle.swift */,
+				403665EB1FE66D9100053BEF /* Parser.swift */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		403665DE1FE66D5900053BEF /* FetchWWDCSubtitles */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 403665E61FE66D5900053BEF /* Build configuration list for PBXNativeTarget "FetchWWDCSubtitles" */;
+			buildPhases = (
+				403665DB1FE66D5900053BEF /* Sources */,
+				403665DC1FE66D5900053BEF /* Frameworks */,
+				403665DD1FE66D5900053BEF /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FetchWWDCSubtitles;
+			productName = FetchWWDCSubtitles;
+			productReference = 403665DF1FE66D5900053BEF /* FetchWWDCSubtitles */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		403665D71FE66D5900053BEF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = DeanChung;
+				TargetAttributes = {
+					403665DE1FE66D5900053BEF = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 403665DA1FE66D5900053BEF /* Build configuration list for PBXProject "FetchWWDCSubtitles" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 403665D61FE66D5900053BEF;
+			productRefGroup = 403665E01FE66D5900053BEF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				403665DE1FE66D5900053BEF /* FetchWWDCSubtitles */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		403665DB1FE66D5900053BEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				403665F11FE66D9100053BEF /* VideoSources.swift in Sources */,
+				403665F21FE66D9100053BEF /* String+Additions.swift in Sources */,
+				403665F31FE66D9100053BEF /* FetchSubtitleManager.swift in Sources */,
+				403665E31FE66D5900053BEF /* main.swift in Sources */,
+				403665EF1FE66D9100053BEF /* Subtitle.swift in Sources */,
+				403665F01FE66D9100053BEF /* Parser.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		403665E41FE66D5900053BEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		403665E51FE66D5900053BEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		403665E71FE66D5900053BEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6XMLMYCH56;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		403665E81FE66D5900053BEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6XMLMYCH56;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		403665DA1FE66D5900053BEF /* Build configuration list for PBXProject "FetchWWDCSubtitles" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				403665E41FE66D5900053BEF /* Debug */,
+				403665E51FE66D5900053BEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		403665E61FE66D5900053BEF /* Build configuration list for PBXNativeTarget "FetchWWDCSubtitles" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				403665E71FE66D5900053BEF /* Debug */,
+				403665E81FE66D5900053BEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 403665D71FE66D5900053BEF /* Project object */;
+}
