@@ -49,6 +49,12 @@ struct FetchSubtitleManager {
     return rawSubtitleString
   }
   
+  
+  /// 下載 WWDC 指定年份的所有影片字幕
+  ///
+  /// - Parameters:
+  ///   - year: 指定年份，可以是 2015、2016、2017
+  ///   - lang: 支援語系， .ENG、.CHS
   public static func downloadSubtitles(withYear year: Int, language lang: Subtitle.Language) {
     guard let urlDicts = getVideoSourceUrlDictsFromYear(year) else {
       print("video sources with \(year) were not exist")
@@ -79,6 +85,12 @@ struct FetchSubtitleManager {
     
   }
   
+  /// 下載 WWDC 特定年份的單一Session影片字幕
+  ///
+  /// - Parameters:
+  ///   - year: 指定年份，可以是 2015、2016、2017
+  ///   - session: 舉例， 408、202
+  ///   - lang: 支援語系， .ENG、.CHS
   public static func downloadSubtitle(withYear year: Int, session: Int, language lang: Subtitle.Language) {
     guard !isContentExist(year: year, session: session, lang: lang) else {
       return
