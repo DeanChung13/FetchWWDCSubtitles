@@ -53,9 +53,9 @@ struct FetchSubtitleManager {
   /// 下載 WWDC 指定年份的所有影片字幕
   ///
   /// - Parameters:
-  ///   - year: 指定年份，可以是 2015、2016、2017
+  ///   - year: 指定年份，可以是 .WWDC2015、.WWDC2016、.WWDC2017
   ///   - lang: 支援語系， .ENG、.CHS
-  public static func downloadSubtitles(withYear year: Int, language lang: Subtitle.Language) {
+  public static func downloadSubtitles(withYear year: WWDCYear, language lang: Subtitle.Language) {
     guard let urlDicts = getVideoSourceUrlDictsFromYear(year) else {
       print("video sources with \(year) were not exist")
       return
@@ -88,10 +88,10 @@ struct FetchSubtitleManager {
   /// 下載 WWDC 特定年份的單一Session影片字幕
   ///
   /// - Parameters:
-  ///   - year: 指定年份，可以是 2015、2016、2017
+  ///   - year: 指定年份，可以是 .WWDC2015、.WWDC2016、.WWDC2017
   ///   - session: 舉例， 408、202
   ///   - lang: 支援語系， .ENG、.CHS
-  public static func downloadSubtitle(withYear year: Int, session: Int, language lang: Subtitle.Language) {
+  public static func downloadSubtitle(withYear year: WWDCYear, session: Int, language lang: Subtitle.Language) {
     guard !isContentExist(year: year, session: session, lang: lang) else {
       return
     }
@@ -110,7 +110,7 @@ struct FetchSubtitleManager {
     saveContent(subtitleFormattedContent, year: year, session: session, lang: lang)
   }
   
-  private static func saveContent(_ content: String, year: Int, session: Int, lang: Subtitle.Language) {
+  private static func saveContent(_ content: String, year: WWDCYear, session: Int, lang: Subtitle.Language) {
     let directory = createDirectory(year: year)
     let filePath = createFilePath(year: year, session: session, lang: lang)
     
@@ -133,16 +133,16 @@ struct FetchSubtitleManager {
     
   }
   
-  private static func createDirectory(year: Int) -> String {
-    return "./WWDC\(year)"
+  private static func createDirectory(year: WWDCYear) -> String {
+    return "./WWDC\(year.rawValue)"
   }
   
-  private static func createFilePath(year: Int, session: Int, lang: Subtitle.Language) -> String {
+  private static func createFilePath(year: WWDCYear, session: Int, lang: Subtitle.Language) -> String {
     let directory = createDirectory(year: year)
     return "\(directory)/Session_\(session)_\(lang).srt"
   }
   
-  private static func isContentExist(year: Int, session: Int, lang: Subtitle.Language) -> Bool {
+  private static func isContentExist(year: WWDCYear, session: Int, lang: Subtitle.Language) -> Bool {
     let filePath = createFilePath(year: year, session: session, lang: lang)
     var isDir: ObjCBool = ObjCBool(false)
     let fm = FileManager.default
@@ -153,20 +153,18 @@ struct FetchSubtitleManager {
     return isExist
   }
 
-  private static func getVideoSourceUrlDictsFromYear(_ year: Int) -> [Int: String]? {
-    switch year {
-    case 2017:
+  private static func getVideoSourceUrlDictsFromYear(_ year: WWDCYear) -> [Int: String]? {
+    switch year  {
+    case .WWDC2017:
       return VideoSources.WWDC2017.urlDicts
-    case 2016:
+    case .WWDC2016:
       return VideoSources.WWDC2016.urlDicts
-    case 2015:
+    case .WWDC2015:
       return VideoSources.WWDC2015.urlDicts
-    default:
-      return nil
     }
   }
   
-  private static func getVideoSourceUrlFromYear(_ year: Int, session: Int) -> String? {
+  private static func getVideoSourceUrlFromYear(_ year: WWDCYear, session: Int) -> String? {
     guard let urlDicts = getVideoSourceUrlDictsFromYear(year) else {
       print("video sources with \(year) were not exist")
       return nil

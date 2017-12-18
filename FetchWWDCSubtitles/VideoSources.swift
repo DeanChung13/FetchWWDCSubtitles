@@ -8,6 +8,12 @@
 
 import Foundation
 
+enum WWDCYear: Int {
+  case WWDC2017 = 2017
+  case WWDC2016 = 2016
+  case WWDC2015 = 2015
+}
+
 struct VideoSources {
   private static func convertRawUrlsToUrlDicts(rawUrls: String) -> [Int: String] {
     let urls = rawUrls.split(separator: "\n")
