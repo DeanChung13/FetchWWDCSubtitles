@@ -13,6 +13,7 @@
 		403665F11FE66D9100053BEF /* VideoSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403665EC1FE66D9100053BEF /* VideoSources.swift */; };
 		403665F21FE66D9100053BEF /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403665ED1FE66D9100053BEF /* String+Additions.swift */; };
 		403665F31FE66D9100053BEF /* FetchSubtitleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403665EE1FE66D9100053BEF /* FetchSubtitleManager.swift */; };
+		4036661C1FE7B30600053BEF /* CommandHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4036661B1FE7B30600053BEF /* CommandHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,7 @@
 		403665EC1FE66D9100053BEF /* VideoSources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoSources.swift; sourceTree = "<group>"; };
 		403665ED1FE66D9100053BEF /* String+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
 		403665EE1FE66D9100053BEF /* FetchSubtitleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchSubtitleManager.swift; sourceTree = "<group>"; };
+		4036661B1FE7B30600053BEF /* CommandHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				403665EE1FE66D9100053BEF /* FetchSubtitleManager.swift */,
 				403665ED1FE66D9100053BEF /* String+Additions.swift */,
 				403665EC1FE66D9100053BEF /* VideoSources.swift */,
+				4036661B1FE7B30600053BEF /* CommandHelper.swift */,
 				403665E21FE66D5900053BEF /* main.swift */,
 			);
 			path = FetchWWDCSubtitles;
@@ -146,6 +149,7 @@
 				403665F11FE66D9100053BEF /* VideoSources.swift in Sources */,
 				403665F21FE66D9100053BEF /* String+Additions.swift in Sources */,
 				403665F31FE66D9100053BEF /* FetchSubtitleManager.swift in Sources */,
+				4036661C1FE7B30600053BEF /* CommandHelper.swift in Sources */,
 				403665E31FE66D5900053BEF /* main.swift in Sources */,
 				403665EF1FE66D9100053BEF /* Subtitle.swift in Sources */,
 				403665F01FE66D9100053BEF /* Parser.swift in Sources */,
